@@ -17,17 +17,6 @@ Generic 的目的是提供型別安全(Type Safety)、提升程式重用性(Reus
 - 執行期容易發生 InvalidCastException
 - Value Type 會發生 Boxing / Unboxing
 
-where 條件約束（Constraints）可以限制型別
-1. where T : struct （限制必須是「值型別」）意義：T 只能是 int, double, bool, DateTime 或自訂的 struct。不能是常規的物件類別（class）。實戰情境：通常用於數學運算、資料底層優化，保證資料絕對不會是 null。
-2. where T : class （限制必須是「引用型別」）意義：與上面相反，T 只能是類別（如 string、自訂的物件 User、Order 等）。實戰情境：常用於資料庫、API 傳回值。因為限制了 class，你就可以給它預設值 null。
-3. where T : new() （限制必須有「無參數建構子」）意義：保證這個 T 可以被 new 出來。實戰情境：如果你想在泛型類別內部自己動態建立 T 的實體，就必須加上這個，否則編譯器會怕有些類別沒有公開建構子而報錯。
-4. where T : <基底類別名稱> （限制必須是某個類別或其子類別）意義：T 必須繼承自某個特定的父類別。實戰情境：遊戲開發中，限制只有「怪獸（Monster）」類別的子類別（如龍、哥布林）才能傳進這個方法。
-5. where T : <介面名稱> （限制必須實作某個介面）—— 最常用！意義：T 必須實作指定的 Interface。實戰情境：當你需要物件具備某種特定的行為（例如：可存檔、可飛、可排序）。
-6. 終極大絕：多重條件約束（組合拳）你可以同時要求 T 符合多個條件，只要用逗號隔開即可。如果有多個型別參數（如 T 和 U），就寫多個 where：csharp// 限制 T 必須是類別、有新創建構子、且必須實作 ICloneable 介面
-=> public class DeepCopier<T> where T : class, ICloneable, new()
-
----
-
 ## 範例
 ```csharp
 List<int> numbers = new List<int>();
@@ -121,17 +110,14 @@ Constraint (型別約束) 用來限制泛型參數可接受的型別。
 
 可增加 API 的可讀性與安全性。
 
-常見約束：
-
-```text
-class
-struct
-new()
-interface
-base class
-notnull
-unmanaged
-```
+where 條件約束（Constraints）可以限制型別
+1. where T : struct （限制必須是「值型別」）意義：T 只能是 int, double, bool, DateTime 或自訂的 struct。不能是常規的物件類別（class）。實戰情境：通常用於數學運算、資料底層優化，保證資料絕對不會是 null。
+2. where T : class （限制必須是「引用型別」）意義：與上面相反，T 只能是類別（如 string、自訂的物件 User、Order 等）。實戰情境：常用於資料庫、API 傳回值。因為限制了 class，你就可以給它預設值 null。
+3. where T : new() （限制必須有「無參數建構子」）意義：保證這個 T 可以被 new 出來。實戰情境：如果你想在泛型類別內部自己動態建立 T 的實體，就必須加上這個，否則編譯器會怕有些類別沒有公開建構子而報錯。
+4. where T : <基底類別名稱> （限制必須是某個類別或其子類別）意義：T 必須繼承自某個特定的父類別。實戰情境：遊戲開發中，限制只有「怪獸（Monster）」類別的子類別（如龍、哥布林）才能傳進這個方法。
+5. where T : <介面名稱> （限制必須實作某個介面）—— 最常用！意義：T 必須實作指定的 Interface。實戰情境：當你需要物件具備某種特定的行為（例如：可存檔、可飛、可排序）。
+6. 終極大絕：多重條件約束（組合拳）你可以同時要求 T 符合多個條件，只要用逗號隔開即可。如果有多個型別參數（如 T 和 U），就寫多個 where：csharp// 限制 T 必須是類別、有新創建構子、且必須實作 ICloneable 介面
+=> public class DeepCopier<T> where T : class, ICloneable, new()
 
 ---
 
