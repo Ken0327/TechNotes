@@ -1,0 +1,3 @@
+# RabbitMQ
+
+Messaging notes.
