@@ -271,6 +271,36 @@ Slow 維護有效區域
 * 資料過濾
 
 \---
+## 9\. Find Pivot Index (#724)
+這題是 LeetCode Array 題中的經典 Prefix Sum（前綴和） 題型。
+
+pivot 左邊元素總和 = pivot 右邊元素總和
+
+### 核心技術
+
+* Prefix Sum 維護前面累積總和
+* Running Sum 一路維護目前狀態 而非重複計算
+* Space Optimization => leftSum和total 最佳解 Space O(1), Time O(n)
+
+* 面試看到以下關鍵字：
+Left Sum
+Right Sum
+Balance
+Equilibrium
+Pivot
+Range Sum
+Subarray Sum
+
+優先想到：
+Prefix Sum
+* Pivot Index = Total Sum - Left Sum - Current Value = Right Sum
+
+
+### 工作應用
+* 財務分析 - 收入支出 找到平衡點
+* KPI 分析 - 找到數據分界點
+* Log / Traffic 分析 - 流量累積, 前後負載平衡點
+
 
 # 常見 Pattern 對照表
 
@@ -284,7 +314,7 @@ Slow 維護有效區域
 |Maximum Subarray|DP / Kadane|
 |Rotate Array|Reverse Technique|
 |Move Zeroes|Fast / Slow Pointer|
-
+|Find Pivot Index|Prefix Sum|
 \---
 
 # LeetCode 分類地圖
