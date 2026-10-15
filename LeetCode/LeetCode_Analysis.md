@@ -19,16 +19,16 @@ Project 實作
 # Array Patterns Top 10
 
 ## 核心題目
-1. Two Sum (#1)
-2. Best Time to Buy and Sell Stock (#121)
-3. Product of Array Except Self (#238)
-4. Merge Sorted Array (#88)
-5. Remove Duplicates from Sorted Array (#26)
-6. Maximum Subarray (#53)
-7. Rotate Array (#189)
-8. Move Zeroes (#283)
-9. Find Pivot Index (#724)
-10. Majority Element (#169)
+- [1. Two Sum (#1)](#1-two-sum-1)
+- [2. Best Time to Buy and Sell Stock (#121)](#2-best-time-to-buy-and-sell-stock-121)
+- [3. Product of Array Except Self (#238)](#3-product-of-array-except-self-238)
+- [4. Merge Sorted Array (#88)](#4-merge-sorted-array-88)
+- [5. Remove Duplicates from Sorted Array (#26)](#5-remove-duplicates-from-sorted-array-26)
+- [6. Maximum Subarray (#53)](#6-maximum-subarray-53)
+- [7. Rotate Array (#189)](#7-rotate-array-189)
+- [8. Move Zeroes (#283)](#8-move-zeroes-283)
+- [9. Find Pivot Index (#724)](#9-find-pivot-index-724)
+- [10. Majority Element (#169)](#10-majority-element-169)
 
 # 常見 Pattern 對照表
 \---
