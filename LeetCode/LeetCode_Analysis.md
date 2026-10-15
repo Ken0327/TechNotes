@@ -32,6 +32,7 @@ Project 實作
 
 # Hash Table Top 10
 - [1. Contains Duplicate (#217)](#1-contains-duplicate-217)
+- [2. Contains Duplicate II (#219)](#2-contains-duplicate-ii-219)
 * Valid Anagram (#242)
 * Two Sum (#1)
 * Group Anagrams (#49)
@@ -430,6 +431,37 @@ HashMap
 ↓
 128. Longest Consecutive Sequence
 HashSet
+
+\---
+
+## 2\. Contains Duplicate II (#219)
+給定整數陣列 nums 和整數 k，判斷是否存在兩個不同 index i 與 j
+219 的關鍵不是找 duplicate，而是把 abs(i-j)<=k 轉換成「大小為 k 的 Sliding Window」。
+
+### 核心技術
+* Hash Map 記錄最後出現位置
+Time: O(n)
+Space: O(n)
+* 更好的解法: Sliding Window + HashSet 只需要關心距離 k 內的元素
+Time: O(n)
+Space: O(k)
+
+### 工作應用
+* API 請求去重複（Deduplication）ex只保留某段時間的提交
+* Fraud Detection（詐欺偵測）最近N分鐘的交易
+* Log 監控系統
+* 網路封包防重送
+* Event Hub / Kafka
+* UI Automation
+* Cyber Security
+
+* 如果面試官問：
+219 Contains Duplicate II 在實務上有什麼用途？
+  
+你可以回答：
+它本質上是在固定範圍（Sliding Window）內判斷資料是否重複，因此常應用於事件去重（Deduplication）、API 重送檢測、Kafka/Event Hub 訊息處理、網路封包檢查、詐欺交易偵測以及資安登入監控等場景。核心思想是只保留最近 N 筆或最近 N 秒的資料，利用 HashSet 在 O(1) 時間內檢查是否出現重複事件。
+
+這就是為什麼這題經常被歸類為 Sliding Window + Hashing 的經典實戰題。
 
 \---
 
