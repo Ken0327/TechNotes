@@ -16,9 +16,9 @@ Project 實作
 
 \---
 
-# Array Patterns Top 10
+# LeetCode 分類地圖
 
-## 核心題目
+# Array Top 10
 - [1. Two Sum (#1)](#1-two-sum-1)
 - [2. Best Time to Buy and Sell Stock (#121)](#2-best-time-to-buy-and-sell-stock-121)
 - [3. Product of Array Except Self (#238)](#3-product-of-array-except-self-238)
@@ -30,12 +30,24 @@ Project 實作
 - [9. Find Pivot Index (#724)](#9-find-pivot-index-724)
 - [10. Majority Element (#169)](#10-majority-element-169)
 
+# Hash Table Top 10
+- [1. Contains Duplicate (#217)](#1-contains-duplicate-217)
+* Valid Anagram (#242)
+* Two Sum (#1)
+* Group Anagrams (#49)
+* Longest Consecutive Sequence (#128)
+* Happy Number (#202)
+* Isomorphic Strings (#205)
+* Word Pattern (#290)
+* Intersection of Two Arrays (#349)
+* Top K Frequent Elements (#347)
+
+  
 # 常見 Pattern 對照表
-\---
 
 |題目|Pattern|
 |-|-|
-|Two Sum|Hash Map|
+|1 Two Sum|Hash Map (查找補數)|
 |Best Time to Buy and Sell Stock|Greedy|
 |Product of Array Except Self|Prefix / Suffix|
 |Merge Sorted Array|Two Pointers|
@@ -44,9 +56,9 @@ Project 實作
 |Rotate Array|Reverse Technique|
 |Move Zeroes|Fast / Slow Pointer|
 |Find Pivot Index|Prefix Sum|
-|Majority Element|Boyer Moore Voting Algorithm|
+|169 Majority Element|Boyer Moore Voting Algorithm (消除配對)|
+|217 Contains Duplicate|HashSet（檢查是否出現過）|
 \---
-
 
 ## 1\. Two Sum (#1)
 
@@ -366,11 +378,61 @@ Boyer-Moore 在實務上有什麼用途？
 
 \---
 
-# LeetCode 分類地圖
 
 ## Hash Table
 
-* Contains Duplicate (#217)
+## 1\. Contains Duplicate (#217)
+Hash Set 為什麼這麼重要？
+這題其實是在考：
+
+「快速判斷元素是否出現過」
+
+這是工程上極常見的問題。
+
+### 核心技術
+* Hash Set
+
+### 工作應用
+* 帳號註冊檢查
+* 資料庫 Unique Constraint
+* Log 過濾重複資料
+* 網頁爬蟲 - 避免重複抓取
+* UI Automation 測試 - 驗證資料是否重複
+* Telemetry / Log Analytics - 檢查是否有節點重複上報
+
+### 面試回答模板
+
+如果面試官問：為什麼這題用 HashSet？
+
+可以回答：
+因為題目本質是在判斷元素是否曾經出現過。HashSet 的查找時間平均為 O(1)，遍歷一次陣列即可完成，因此整體時間複雜度 O(n)，是最優解。該思路廣泛應用於帳號唯一性檢查、資料去重、快取查詢、爬蟲 URL 去重、事件重複處理與 UI 測試資料驗證等場景。
+
+看到：
+判斷是否出現過
+判斷是否重複
+快速查找
+
+應立即想到：
+HashSet
+HashMap
+
+217. Contains Duplicate
+HashSet
+↓
+219. Contains Duplicate II
+HashMap + Index
+↓
+1. Two Sum
+HashMap
+↓
+49. Group Anagrams
+HashMap
+↓
+128. Longest Consecutive Sequence
+HashSet
+
+\---
+
 * Valid Anagram (#242)
 * Two Sum (#1)
 * Group Anagrams (#49)
@@ -380,6 +442,8 @@ Boyer-Moore 在實務上有什麼用途？
 * Word Pattern (#290)
 * Intersection of Two Arrays (#349)
 * Top K Frequent Elements (#347)
+
+
 
 ### 工作應用
 
