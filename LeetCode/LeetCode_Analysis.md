@@ -16,7 +16,37 @@ Project 實作
 
 \---
 
-# Array Patterns
+# Array Patterns Top 10
+
+## 核心題目
+1. Two Sum (#1)
+2. Best Time to Buy and Sell Stock (#121)
+3. Product of Array Except Self (#238)
+4. Merge Sorted Array (#88)
+5. Remove Duplicates from Sorted Array (#26)
+6. Maximum Subarray (#53)
+7. Rotate Array (#189)
+8. Move Zeroes (#283)
+9. Find Pivot Index (#724)
+10. Majority Element (#169)
+
+# 常見 Pattern 對照表
+\---
+
+|題目|Pattern|
+|-|-|
+|Two Sum|Hash Map|
+|Best Time to Buy and Sell Stock|Greedy|
+|Product of Array Except Self|Prefix / Suffix|
+|Merge Sorted Array|Two Pointers|
+|Remove Duplicates|Fast / Slow Pointer|
+|Maximum Subarray|DP / Kadane|
+|Rotate Array|Reverse Technique|
+|Move Zeroes|Fast / Slow Pointer|
+|Find Pivot Index|Prefix Sum|
+|Majority Element|Boyer Moore Voting Algorithm|
+\---
+
 
 ## 1\. Two Sum (#1)
 
@@ -301,20 +331,39 @@ Prefix Sum
 * KPI 分析 - 找到數據分界點
 * Log / Traffic 分析 - 流量累積, 前後負載平衡點
 
+\---
 
-# 常見 Pattern 對照表
+## 10\. Majority Element (#169)
+給定一個整數陣列 nums，找出出現次數超過 ⌊n/2⌋ 的元素。
+題目保證：
+Majority Element 一定存在, 陣列長度至少為 1
 
-|題目|Pattern|
-|-|-|
-|Two Sum|Hash Map|
-|Best Time to Buy and Sell Stock|Greedy|
-|Product of Array Except Self|Prefix / Suffix|
-|Merge Sorted Array|Two Pointers|
-|Remove Duplicates|Fast / Slow Pointer|
-|Maximum Subarray|DP / Kadane|
-|Rotate Array|Reverse Technique|
-|Move Zeroes|Fast / Slow Pointer|
-|Find Pivot Index|Prefix Sum|
+### 核心技術
+
+* Hash Table : 利用 Hash Map 記錄每個數字出現次數 => Time O(n), Space O(n)
+* Sort : 若某個元素出現超過一半, 排序後依定佔據中間位置 =>Time O(n log n), Space O(1) or  O(log n)
+* Best Solution => Boyer Moore Voting Algorithm : 因為 Majority Element 出現次數 > n/2, 所以它的數量一定比其他所有元素加起來還多。 => Time: O(n), Space: O(1)
+Boyer-Moore 的本質就是「不同數字互相抵消」，因為 Majority Element 的數量超過其他所有元素總和，所以最後剩下的一定是它。
+
+### 工作應用
+* Log 分析（最常見）
+  1. 日誌分析
+  2. 網路封包分析
+  3. * Click Stream 分析
+* 網路投票系統
+* Streaming Data (資料流)
+* 分散式系統監控
+* AI / Machine Learning
+
+###為什麼面試愛考？
+因為它考的是一個重要思想： Pair Cancellation (配對消除)
+如果面試官問：
+Boyer-Moore 在實務上有什麼用途？
+你可以回答：
+它適合用在大量資料串流（Streaming Data）、Log 分析、監控系統、分散式系統事件統計等場景。當我們只需要找出是否存在一個出現超過 50% 的元素時，Boyer-Moore 可以只用 O(1) 記憶體完成統計，比 HashMap 更適合超大規模資料處理。
+這就是這題真正想考的核心價值，不是演算法本身，而是 「用常數空間找出資料流中的 Majority」。
+
+
 \---
 
 # LeetCode 分類地圖
