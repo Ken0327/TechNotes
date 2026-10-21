@@ -1,6 +1,6 @@
 # C#題庫完整版 - 題目總覽
 
-# Generics題庫
+[# Generics題庫](Generics.md#c題庫---generics-泛型)
 
 ## 題目
 1. 為什麼需要 Generic？
