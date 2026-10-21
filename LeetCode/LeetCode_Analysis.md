@@ -465,7 +465,44 @@ Space: O(k)
 
 \---
 
-* Valid Anagram (#242)
+## 3\. Valid Anagram (#242)
+給定兩個字串 s 和 t，判斷 t 是否為 s 的 Anagram。
+Anagram（字母異位詞）表示：
+字元種類完全相同
+每個字元出現次數完全相同
+順序可以不同
+
+### 核心技術
+面試官想考什麼？
+* 1. Frequency Counting 排序法 Sort
+Time: O(n log n)
+Space: O(n)
+
+* 2. Hash Table 計數法
+var map = new Dictionary<char, int>();
+Time: O(n)
+Space: O(k)
+
+* 3. Array Mapping：26 個字母陣列（最優）
+ int[] count = new int[26];  所以根本不用 Dictionary。
+count[s[i] - 'a']++;
+count[t[i] - 'a']--;
+
+=> 核心不是排序，而是「比較每個字元的出現次數是否完全相同」，最佳解為 Frequency Count + int[26]
+Time O(n)
+Space O(1)
+
+### 工作應用
+* 應用1：搜尋引擎拼字校正
+* 應用2：文字分析(NLP)
+文字探勘
+關鍵字分析
+搜尋最佳化
+* 應用3：作弊偵測
+* 應用4：資料一致性驗證
+
+\---
+
 * Two Sum (#1)
 * Group Anagrams (#49)
 * Longest Consecutive Sequence (#128)
