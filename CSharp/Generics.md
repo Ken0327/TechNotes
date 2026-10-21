@@ -1,10 +1,7 @@
-# C#題庫 - Generics 篇
+# C#題庫 - Generics (泛型)
 
-# 主題
-Generics (泛型)
 
-## 問題
-為什麼需要 Generic？
+## 問題 1. 為什麼需要 Generic？
 
 ---
 
@@ -44,8 +41,7 @@ int value = numbers[0];
 
 
 
-## 問題
-Generic 如何避免 Boxing 與 Unboxing？
+## 問題2. Generic 如何避免 Boxing 與 Unboxing？
 
 ---
 
@@ -100,8 +96,7 @@ int value = list[0];
 - CLR via C#
 
 
-## 問題
-Generic Constraint 有哪些？
+## 問題3. Generic Constraint 有哪些？
 
 ---
 
@@ -153,8 +148,7 @@ public class Repository<T>
 # 主題
 Generics (泛型)
 
-## 問題
-CLR 如何實作 Generic？
+## 問題4. CLR 如何實作 Generic？
 
 ---
 
@@ -211,8 +205,7 @@ List<string>
 # 主題
 Generics (泛型)
 
-## 問題
-什麼是 Covariance 與 Contravariance？
+## 問題5. 什麼是 Covariance 與 Contravariance？
 
 ---
 
