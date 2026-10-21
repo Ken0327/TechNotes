@@ -1,13 +1,13 @@
 # C#題庫完整版 - 題目總覽
 
-[# Generics題庫](Generics.md#c題庫---generics-泛型)
+# [Generics題庫](Generics.md#c題庫---generics-泛型)
 
 ## 題目
-1. 為什麼需要 Generic？
-2. Generic 如何避免 Boxing 與 Unboxing？
-3. Generic Constraint 有哪些？
-4. CLR 如何實作 Generic？
-5. 什麼是 Covariance 與 Contravariance？
+1. [為什麼需要 Generic？](Generics.md#問題-1-為什麼需要-generic)
+2. [Generic 如何避免 Boxing 與 Unboxing？](Generics.md#問題2-generic-如何避免-boxing-與-unboxing)
+3. [Generic Constraint 有哪些？](Generics.md#問題3-generic-constraint-有哪些)
+4. [CLR 如何實作 Generic？](Generics.md#問題4-clr-如何實作-generic)
+5. [什麼是 Covariance 與 Contravariance？](Generics.md#問題5-什麼是-covariance-與-contravariance)
 
 ---
 
