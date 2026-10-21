@@ -33,7 +33,7 @@ Project 實作
 # Hash Table Top 10
 - [1. Contains Duplicate (#217)](#1-contains-duplicate-217)
 - [2. Contains Duplicate II (#219)](#2-contains-duplicate-ii-219)
-* Valid Anagram (#242)
+- [3. Valid Anagram (#242)](#2-valid-anagram-242)
 * Two Sum (#1)
 * Group Anagrams (#49)
 * Longest Consecutive Sequence (#128)
@@ -474,21 +474,24 @@ Anagram（字母異位詞）表示：
 
 ### 核心技術
 面試官想考什麼？
-* 1. Frequency Counting 排序法 Sort
+1. Frequency Counting 排序法 Sort
+
 Time: O(n log n)
 Space: O(n)
 
-* 2. Hash Table 計數法
+2. Hash Table 計數法
 var map = new Dictionary<char, int>();
+
 Time: O(n)
 Space: O(k)
 
-* 3. Array Mapping：26 個字母陣列（最優）
+3. Array Mapping：26 個字母陣列（最優）
  int[] count = new int[26];  所以根本不用 Dictionary。
 count[s[i] - 'a']++;
 count[t[i] - 'a']--;
 
 => 核心不是排序，而是「比較每個字元的出現次數是否完全相同」，最佳解為 Frequency Count + int[26]
+
 Time O(n)
 Space O(1)
 
