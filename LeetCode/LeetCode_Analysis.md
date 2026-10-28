@@ -33,9 +33,9 @@ Project 實作
 # Hash Table Top 10
 - [1. Contains Duplicate (#217)](#1-contains-duplicate-217)
 - [2. Contains Duplicate II (#219)](#2-contains-duplicate-ii-219)
-- [3. Valid Anagram (#242)](#2-valid-anagram-242)
-* Two Sum (#1)
-* Group Anagrams (#49)
+- [3. Valid Anagram (#242)](#3-valid-anagram-242)
+- [4. Two Sum (同上)(#1)](#1-two-sum-1)
+* [5. Group Anagrams (#49)](#5-group-anagrams-49)
 * Longest Consecutive Sequence (#128)
 * Happy Number (#202)
 * Isomorphic Strings (#205)
@@ -506,8 +506,67 @@ Space O(1)
 
 \---
 
-* Two Sum (#1)
-* Group Anagrams (#49)
+## 5\. Group Anagrams (#49)
+### 如何思考
+如何判斷兩個字串是不是 Anagram？
+
+排序後的字串
+=
+Anagram 的唯一 Key
+
+### 核心技術
+Hash Table + Canonical Key
+Key     Value
+--------------------
+aet  -> eat, tea, ate
+ant  -> tan, nat
+abt  -> bat
+
+1. Sorting
+Time: O(n × k log k)
+Space: 
+
+2. Character Count（進階）
+不排序也可以
+Time: O(n × k)
+Space: 
+
+### 面試會考什麼？
+把複雜物件轉成唯一 Key
+
+這是一種非常重要的技巧：
+Normalization
+Canonical Representation
+
+### 工作應用
+* 檔案內容去重
+* 搜尋引擎關鍵字分析
+* 商品標籤分類
+* Fraud Detection
+
+### 這題考什麼能力？
+1. Hash Table
+Dictionary<TKey,TValue>
+
+快速分組。
+
+2. String Manipulation
+Array.Sort(chars);
+
+建立標準 Key。
+
+3. Grouping
+
+本質其實是：
+Group By 概念。
+
+有點像 SQL：
+SQL
+SELECT *
+FROM Words
+GROUP BY SortedWord
+
+\---
 * Longest Consecutive Sequence (#128)
 * Happy Number (#202)
 * Isomorphic Strings (#205)
