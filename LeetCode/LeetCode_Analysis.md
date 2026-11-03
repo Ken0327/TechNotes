@@ -36,7 +36,7 @@ Project 實作
 - [3. Valid Anagram (#242)](#3-valid-anagram-242)
 - [4. Two Sum (同上)(#1)](#1-two-sum-1)
 - [5. Group Anagrams (#49)](#5-group-anagrams-49)
-- [6. Longest Consecutive Sequence (#128)](#6-longest_consecutive_sequence-128)
+- [6. Longest Consecutive Sequence (#128)](#6-longest-consecutive-sequence-128)
 * Happy Number (#202)
 * Isomorphic Strings (#205)
 * Word Pattern (#290)
