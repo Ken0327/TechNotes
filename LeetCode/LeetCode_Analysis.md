@@ -35,8 +35,8 @@ Project 實作
 - [2. Contains Duplicate II (#219)](#2-contains-duplicate-ii-219)
 - [3. Valid Anagram (#242)](#3-valid-anagram-242)
 - [4. Two Sum (同上)(#1)](#1-two-sum-1)
-* [5. Group Anagrams (#49)](#5-group-anagrams-49)
-* Longest Consecutive Sequence (#128)
+- [5. Group Anagrams (#49)](#5-group-anagrams-49)
+- [6. Longest Consecutive Sequence (#128)](#6-longest_consecutive_sequence-128)
 * Happy Number (#202)
 * Isomorphic Strings (#205)
 * Word Pattern (#290)
@@ -49,16 +49,19 @@ Project 實作
 |題目|Pattern|
 |-|-|
 |1 Two Sum|Hash Map (查找補數)|
-|Best Time to Buy and Sell Stock|Greedy|
-|Product of Array Except Self|Prefix / Suffix|
-|Merge Sorted Array|Two Pointers|
-|Remove Duplicates|Fast / Slow Pointer|
-|Maximum Subarray|DP / Kadane|
-|Rotate Array|Reverse Technique|
-|Move Zeroes|Fast / Slow Pointer|
-|Find Pivot Index|Prefix Sum|
+|121 Best Time to Buy and Sell Stock|Greedy|
+|238 Product of Array Except Self|Prefix / Suffix|
+|88 Merge Sorted Array|Two Pointers|
+|26 Remove Duplicates|Fast / Slow Pointer|
+|53 Maximum Subarray|DP / Kadane|
+|189 Rotate Array|Reverse Technique|
+|283 Move Zeroes|Fast / Slow Pointer|
+|724 Find Pivot Index|Prefix Sum|
 |169 Majority Element|Boyer Moore Voting Algorithm (消除配對)|
 |217 Contains Duplicate|HashSet（檢查是否出現過）|
+|242 Valid Anagram |Hash Map（同字母出現頻率）|
+|49 Group Anagrams |Hash Map + Grouping（轉成唯一key）|
+|128 Longest Consecutive Sequence |HashSet + Sequence Detection（找起點）|
 \---
 
 ## 1\. Two Sum (#1)
@@ -567,7 +570,78 @@ FROM Words
 GROUP BY SortedWord
 
 \---
-* Longest Consecutive Sequence (#128)
+
+## 6\. Longest Consecutive Sequence (#128)
+
+### 如何思考
+很多人第一眼會想到排序，但最佳解其實是：
+HashSet + Sequence 起點判斷
+=> Time O(n)
+真正重要的是： 誰是序列起點
+只從起點開始找, 即可避免重複計算。
+
+### 核心技術
+
+1. Sorting
+Array.Sort(nums);
+ => Time: O(n log n)
+
+3. HashSet + Sequence 起點判斷（最佳解）
+Time: O(n)
+
+var set = new HashSet<int>(nums);
+foreach(var num in set)
+
+判斷是不是起點：
+if (!set.Contains(num - 1))
+前一個不存在就是起點。
+
+
+### 工作應用
+找最長連續區間
+* User Login Streak - 連續登入天數
+* Achievement System (遊戲) - 連續破關
+* Sensor Data - 最長穩定運作時間
+* Attendance System - 最長連續出勤紀錄
+
+### 面試在考什麼？
+看到：
+Consecutive
+Sequence
+Longest
+Streak
+Continuous Numbers
+
+優先想到：
+HashSet
+
+而不是排序。
+
+### 面試記憶口訣
+Longest Consecutive Sequence
+ 
+Step1:
+HashSet
+ 
+Step2:
+找起點
+(num - 1 不存在)
+ 
+Step3:
+一路往後數
+ 
+Step4:
+更新最長長度
+
+### 核心收穫
+
+這題真正學到的不是「找連續數字」，而是：
+
+利用 HashSet 的 O(1) 查找能力，把原本排序 O(n log n) 的問題優化成 O(n)。
+
+這是 HashSet 在面試與實際系統設計中最重要的應用場景之一。
+\---
+
 * Happy Number (#202)
 * Isomorphic Strings (#205)
 * Word Pattern (#290)
