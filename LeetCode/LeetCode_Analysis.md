@@ -37,7 +37,7 @@ Project 實作
 - [4. Two Sum (同上)(#1)](#1-two-sum-1)
 - [5. Group Anagrams (#49)](#5-group-anagrams-49)
 - [6. Longest Consecutive Sequence (#128)](#6-longest-consecutive-sequence-128)
-* Happy Number (#202)
+- [7. Happy Number (#202)](#7-happy-number-202)
 * Isomorphic Strings (#205)
 * Word Pattern (#290)
 * Intersection of Two Arrays (#349)
@@ -62,6 +62,7 @@ Project 實作
 |242 Valid Anagram |Hash Map（同字母出現頻率）|
 |49 Group Anagrams |Hash Map + Grouping（轉成唯一key）|
 |128 Longest Consecutive Sequence |HashSet + Sequence Detection（找起點）|
+|202 Happy Number | HashSet + Cycle Detection (判斷是否循環)|
 \---
 
 ## 1\. Two Sum (#1)
@@ -642,24 +643,127 @@ Step4:
 這是 HashSet 在面試與實際系統設計中最重要的應用場景之一。
 \---
 
-* Happy Number (#202)
+## 7\. Happy Number (#202)
+Happy Number 的定義最終能到：1
+
+這題是 LeetCode 經典的 HashSet / Cycle Detection（循環偵測） 題目。
+
+它同時可以用兩種經典技巧解：
+
+1. HashSet 記錄歷史結果
+2. Fast & Slow Pointer (Floyd Cycle Detection)
+面試最常見的是 HashSet 解法。
+
+這題本質是在問：會不會進入無限循環？
+1. 解法一：HashSet（推薦）
+HashSet<int> 
+=> 記錄所有出現過的數字。
+流程:
+若變成 1 → true
+若出現過 → false 否則繼續計算
+計算平方和
+=> 先寫 Helper Function
+
+2. 解法二：Floyd Cycle Detection
+這就是： Linked List Cycle
+為什麼可以？
+每個數字：都有唯一下一個數字
+其實形成：Graph 甚至視為Linked List
+
+因此可以用：
+Slow
+Fast
+
+### 核心技術
+
+技術一：HashSet
+用途：
+偵測是否曾經出現
+
+技術二：Cycle Detection
+判斷：
+是否進入循環
+
+技術三：Digit Manipulation
+數字拆解：
+n % 10
+取得個位數
+n /= 10
+去掉個位數
+
+Time ≈ O(1)
+
+### 工作應用
+1. 循環依賴檢查
+TaskA → TaskB
+TaskB → TaskC
+TaskC → TaskA
+形成 Cycle。
+CI/CD Pipeline、Workflow Engine 常見。
+
+2. 工作流程系統
+例如：
+Draft
+→Review
+→Approve
+→Draft
+誤設造成無限循環。
+
+3. 遊戲 Achievement System
+例如：
+Achievement Chain
+判斷是否形成循環依賴。
+
+4. Graph Traversal
+例如：
+Friend Recommendation
+Permission System
+Dependency Analysis
+都要避免：
+Infinite Loop
+
+
+### 面試在考什麼？
+
+看到：
+重複狀態
+循環
+Infinite Loop
+Cycle
+Visited
+
+優先想到：
+HashSet
+或
+Floyd Cycle Detection
+
+### 面試記憶口訣
+Happy Number
+ 
+拆數字
+→
+平方和
+→
+若到 1
+Happy
+ 
+若重複出現
+Cycle
+Not Happy
+ 
+所以這題真正學的是：
+
+利用 HashSet 或 Floyd Cycle Detection 判斷狀態是否進入循環。
+
+這個技巧在 Workflow、Graph、Dependency、遊戲任務系統等實務開發中都非常常見。
+
+\---
+  
 * Isomorphic Strings (#205)
 * Word Pattern (#290)
 * Intersection of Two Arrays (#349)
 * Top K Frequent Elements (#347)
 
-
-
-### 工作應用
-
-* Cache
-* Session 管理
-* Redis
-* Dictionary 查詢
-
-### Project
-
-Achievement Service
 
 \---
 
