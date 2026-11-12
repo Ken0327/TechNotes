@@ -38,7 +38,7 @@ Project 實作
 - [5. Group Anagrams (#49)](#5-group-anagrams-49)
 - [6. Longest Consecutive Sequence (#128)](#6-longest-consecutive-sequence-128)
 - [7. Happy Number (#202)](#7-happy-number-202)
-* Isomorphic Strings (#205)
+- [8. Isomorphic Strings (#205)](#8-isomorphic-strings-205)
 * Word Pattern (#290)
 * Intersection of Two Arrays (#349)
 * Top K Frequent Elements (#347)
@@ -63,6 +63,7 @@ Project 實作
 |49 Group Anagrams |Hash Map + Grouping（轉成唯一key）|
 |128 Longest Consecutive Sequence |HashSet + Sequence Detection（找起點）|
 |202 Happy Number | HashSet + Cycle Detection (判斷是否循環)|
+|205 Isomorphic Strings | HashSet + Bidirectional Mapping/Pattern Matching (雙向映射)|
 \---
 
 ## 1\. Two Sum (#1)
@@ -652,6 +653,7 @@ Happy Number 的定義最終能到：1
 
 1. HashSet 記錄歷史結果
 2. Fast & Slow Pointer (Floyd Cycle Detection)
+
 面試最常見的是 HashSet 解法。
 
 這題本質是在問：會不會進入無限循環？
@@ -661,11 +663,14 @@ HashSet<int>
 流程:
 若變成 1 → true
 若出現過 → false 否則繼續計算
+
 計算平方和
 => 先寫 Helper Function
 
-2. 解法二：Floyd Cycle Detection
+3. 解法二：Floyd Cycle Detection
+Floyd 的想法 => 不存歷史紀錄。
 這就是： Linked List Cycle
+
 為什麼可以？
 每個數字：都有唯一下一個數字
 其實形成：Graph 甚至視為Linked List
@@ -673,6 +678,24 @@ HashSet<int>
 因此可以用：
 Slow
 Fast
+為什麼一定會相遇？想像跑操場。
+
+### 什麼情況要想到 Floyd？
+
+看到以下關鍵字：
+Cycle
+Loop
+Repeat
+Infinite
+Recurring
+Circular
+1. Linked List Cycle (#141)
+2. Linked List Cycle II (#142)
+3. Happy Number (#202)
+4. Find Duplicate Number (#287)
+
+HashSet	Time O(n)	Space O(n)
+Floyd	Time O(n)		Space O(1)
 
 ### 核心技術
 
@@ -758,8 +781,198 @@ Not Happy
 這個技巧在 Workflow、Graph、Dependency、遊戲任務系統等實務開發中都非常常見。
 
 \---
-  
-* Isomorphic Strings (#205)
+
+## 8\. Isomorphic Strings (#205)
+這題是 LeetCode Hash Table 題型中的經典題，考的是： 一對一映射（One-to-One Mapping）
+
+與前面學過的：
+Two Sum → Hash Table Lookup
+Group Anagrams → Hash Table Grouping
+
+不同的是，這題考： Mapping (映射關係)
+
+## 題目真正意思
+Two Strings Isomorphic：
+
+表示：
+s 中每個字元
+可以一致地映射到
+t 中字元
+
+而且：
+不能一對多
+不能多對一
+
+## 關鍵觀念
+
+必須同時驗證：
+s -> t
+以及：
+t -> s
+
+### 核心技術
+方法一：兩個 Dictionary<char,char> + Bidirectional Mapping
+雙向映射：
+A -> B
+B -> A
+
+延伸題目:
+Isomorphic Strings
+Word Pattern (#290)
+Custom Mapping
+Account Mapping
+
+方法二（面試進階）: 兩個 Dictionary<char,int> +  Pattern Matching
+不直接記錄映射關係。
+記錄：字元最後出現的位置。
+
+延伸題目:
+Isomorphic Strings
+Word Pattern
+Find and Replace Pattern
+Group Anagrams (#49)
+
+兩方法 Time O(n) Space O(n) 相同
+
+### 一句話總結：
+Bidirectional Mapping 是在驗證「對應關係是否一致」；
+Pattern Matching 是在驗證「結構模式是否一致」。
+在 205 Isomorphic Strings 裡，兩者都能做到 O(n)，但 Bidirectional Mapping 更直觀、更符合實務中的資料映射場景，因此也是面試最常見的標準解法。
+
+### 工作應用
+1. User ID Mapping
+
+例如：
+Legacy ID
+→
+New ID
+
+驗證：
+一個舊ID
+只能對應一個新ID
+
+2. API 欄位轉換
+
+例如：
+
+CustomerName
+→
+Name
+CustomerId
+→
+Id
+
+檢查 Mapping 是否一致。
+
+3. 資料同步系統
+
+例如：
+CRM User
+↔ ERP User
+
+需要維持：
+一對一關係
+
+4. 遊戲帳號綁定
+
+例如：
+Xbox Account
+↔ Microsoft Account
+
+必須：
+One-to-One
+
+不能：
+兩個 Xbox
+綁同一個 Microsoft Account
+
+### 面試在考什麼？
+看到關鍵字：
+Mapping
+Correspond
+Pattern
+Transform
+Replace
+
+想到：
+Dictionary
+
+再問自己：
+是否需要雙向驗證？
+
+如果答案是：
+需要確保一對一
+
+就要想到：
+
+Dictionary A → B
+Dictionary B → A
+
+### 面試記憶口訣
+Isomorphic Strings
+不是比較字元
+ 
+而是比較：
+ 
+映射關係（Mapping）
+ 
+A → B
+ 
+且
+ 
+B → A
+
+因此這題的核心 Pattern 可以記成：
+Hash Table
++
+Bidirectional Mapping
++
+Pattern Matching
+
+這也是身份對應、資料同步、帳號綁定、資料轉換系統中非常常見的設計模式。
+
+### 真正的應用場景差異
+Bidirectional Mapping 最常見於系統設計
+
+1. 帳號綁定
+Xbox Account
+↔
+Microsoft Account
+
+2. User Mapping
+Old User ID
+↔
+New User ID
+
+4. Entity Mapping
+CRM Customer
+↔
+ERP Customer
+
+這些都是：
+One-to-One Mapping
+
+### Pattern Matching 常見於資料分析、搜尋引擎
+
+1. Log Signature
+ABCABC
+
+模式：
+0 1 2 0 1 2
+
+2. 模板比對
+foo bar foo
+
+模式：
+A B A
+
+3. NLP
+自然語言處理裡會把句型轉成：
+Pattern Signature
+再做分類。
+
+\---
+
 * Word Pattern (#290)
 * Intersection of Two Arrays (#349)
 * Top K Frequent Elements (#347)
