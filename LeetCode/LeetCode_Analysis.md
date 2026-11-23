@@ -39,7 +39,7 @@ Project 實作
 - [6. Longest Consecutive Sequence (#128)](#6-longest-consecutive-sequence-128)
 - [7. Happy Number (#202)](#7-happy-number-202)
 - [8. Isomorphic Strings (#205)](#8-isomorphic-strings-205)
-* Word Pattern (#290)
+- [9. Word Pattern (#290)](#9-word-pattern-290)
 * Intersection of Two Arrays (#349)
 * Top K Frequent Elements (#347)
 
@@ -64,6 +64,7 @@ Project 實作
 |128 Longest Consecutive Sequence |HashSet + Sequence Detection（找起點）|
 |202 Happy Number | HashSet + Cycle Detection (判斷是否循環)|
 |205 Isomorphic Strings | HashSet + Bidirectional Mapping/Pattern Matching (雙向映射)|
+|290 Word Pattern | HashSet + Bidirectional Mapping/Pattern Matching (雙向映射)|
 \---
 
 ## 1\. Two Sum (#1)
@@ -973,7 +974,99 @@ Pattern Signature
 
 \---
 
-* Word Pattern (#290)
+\---
+
+## 9\.Word Pattern (#290)
+方法同205
+##題目本質
+其實是在驗證：
+Pattern
+是否能唯一對應
+Words
+
+### 核心技術
+方法一：兩個 Dictionary<char,string> + Bidirectional Mapping
+雙向映射：
+A -> B
+B -> A
+先var words = s.Split(' ');
+
+方法二：Pattern Signature: 兩個 Dictionary<object, int>+  Pattern Matching
+不直接記錄映射關係。
+記錄：字元最後出現的位置。
+
+兩方法 Time O(n) Space O(n) 相同
+
+### 工作應用
+1. User ID Mapping
+
+例如：
+Legacy ID
+→
+New ID
+
+驗證：
+一個舊ID
+只能對應一個新ID
+
+2. API 欄位轉換
+
+例如：
+
+CustomerName
+→
+Name
+CustomerId
+→
+Id
+
+檢查 Mapping 是否一致。
+
+3. 資料同步系統
+
+例如：
+CRM User
+↔ ERP User
+
+需要維持：
+一對一關係
+
+4. 遊戲帳號綁定
+
+例如：
+Xbox Account
+↔ Microsoft Account
+
+必須：
+One-to-One
+
+不能：
+兩個 Xbox
+綁同一個 Microsoft Account
+
+### 面試在考什麼？
+
+看到：
+Pattern
+Mapping
+Correspondence
+Match
+
+要想到：
+
+Dictionary
+
+再問自己：
+
+是否需要一對一對應？
+
+
+如果需要：
+Bidirectional Mapping
+
+
+\---
+
 * Intersection of Two Arrays (#349)
 * Top K Frequent Elements (#347)
 
