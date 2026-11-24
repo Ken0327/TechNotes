@@ -14,11 +14,11 @@
 # LINQ題庫
 
 ## 題目
-1. 什麼是 Deferred Execution（延遲執行）？
-2. IEnumerable 與 IQueryable 的差異是什麼？
-3. First、FirstOrDefault、Single、SingleOrDefault 差異？
-4. Select 與 SelectMany 差異？
-5. LINQ 常見效能問題有哪些？
+1. [什麼是 Deferred Execution（延遲執行）？](CSharp_LINQ.md#什麼是-deferred-execution延遲執行)
+2. [IEnumerable 與 IQueryable 的差異是什麼？](CSharp_LINQ.md#ienumerable-與-iqueryable-的差異是什麼) 
+3. [First、FirstOrDefault、Single、SingleOrDefault 差異？](CSharp_LINQ.md#firstfirstordefaultsinglesingleordefault-差異) 
+4. [Select 與 SelectMany 差異？](CSharp_LINQ.md#select-與-selectmany-差異) 
+5. [LINQ 常見效能問題有哪些？](CSharp_LINQ.md#linq-常見效能問題有哪些) 
 
 ---
 
