@@ -11,7 +11,7 @@
 
 ---
 
-# LINQ題庫
+# [LINQ題庫](CSharp_LINQ.md#c題庫---linq-篇) 
 
 ## 題目
 1. [什麼是 Deferred Execution（延遲執行）？](CSharp_LINQ.md#什麼是-deferred-execution延遲執行)
