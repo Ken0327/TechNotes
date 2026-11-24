@@ -40,7 +40,7 @@ Project 實作
 - [7. Happy Number (#202)](#7-happy-number-202)
 - [8. Isomorphic Strings (#205)](#8-isomorphic-strings-205)
 - [9. Word Pattern (#290)](#9-word-pattern-290)
-* Intersection of Two Arrays (#349)
+- [10. Intersection of Two Arrays (#349)](#10-intersection-of-two-arrays-349)
 * Top K Frequent Elements (#347)
 
   
@@ -48,6 +48,7 @@ Project 實作
 
 |題目|Pattern|
 |-|-|
+|Array Top 10|
 |1 Two Sum|Hash Map (查找補數)|
 |121 Best Time to Buy and Sell Stock|Greedy|
 |238 Product of Array Except Self|Prefix / Suffix|
@@ -58,6 +59,7 @@ Project 實作
 |283 Move Zeroes|Fast / Slow Pointer|
 |724 Find Pivot Index|Prefix Sum|
 |169 Majority Element|Boyer Moore Voting Algorithm (消除配對)|
+|Hash Table Top 10|
 |217 Contains Duplicate|HashSet（檢查是否出現過）|
 |242 Valid Anagram |Hash Map（同字母出現頻率）|
 |49 Group Anagrams |Hash Map + Grouping（轉成唯一key）|
@@ -65,6 +67,7 @@ Project 實作
 |202 Happy Number | HashSet + Cycle Detection (判斷是否循環)|
 |205 Isomorphic Strings | HashSet + Bidirectional Mapping/Pattern Matching (雙向映射)|
 |290 Word Pattern | HashSet + Bidirectional Mapping/Pattern Matching (雙向映射)|
+|349 Intersection of Two Arrays | HashSet + Set Operation (交集)|
 \---
 
 ## 1\. Two Sum (#1)
@@ -974,9 +977,7 @@ Pattern Signature
 
 \---
 
-\---
-
-## 9\.Word Pattern (#290)
+## 9\. Word Pattern (#290)
 方法同205
 ##題目本質
 其實是在驗證：
@@ -1064,10 +1065,194 @@ Dictionary
 如果需要：
 Bidirectional Mapping
 
+\---
+
+## 10\. Intersection of Two Arrays (#349)
+這題是典型的 HashSet 題目。
+考的是：
+如何快速找出兩個集合的共同元素（Intersection）
+
+### 核心技術
+方法一：Brute Force
+O(n × m)
+
+方法二：HashSet（最佳解）
+
+為什麼用 HashSet？
+
+HashSet 特性：Contains()
+平均：
+O(1)
+
+如果 List：
+list.Contains()
+需要：
+O(n)
+
+效能差非常多。
+
+### Time 時間複雜度
+建立：
+HashSet(nums1)
+ 
+O(n)
+
+掃描：
+nums2
+
+O(m)
+
+總體：
+O(n+m)
+
+### Space 空間複雜度
+HashSet
+O(n)
+
+方法三：LINQ
+
+實際工作常看到：
+return nums1.Intersect(nums2)
+.ToArray();
+超簡潔。
+
+但面試通常希望你展示：
+HashSet 思維
+
+
+### 面試在考什麼？
+1. HashSet
+核心技術：
+HashSet<T>
+
+用途：
+快速搜尋
+去除重複
+
+2. Set Theory
+
+數學中的：
+Intersection
+Union
+Difference
+
+例如：
+A ∩ B
+就是這題。
+
+
+### 工作應用
+## Project 1 - 權限系統 (Permission System)
+使用者擁有：
+User Permissions
+{
+Read,
+Write,
+Delete
+}
+
+系統需求：
+Required Permissions
+{
+Write,
+Admin
+}
+
+交集：
+{
+Write
+}
+
+代表：
+可執行部分功能
+
+例如：
+
+Azure RBAC
+AWS IAM
+Microsoft Entra ID
+
+底層都有類似概念。
+
+## Project 2 - 推薦系統
+Netflix
+Steam
+Xbox Store
+使用者興趣和遊戲標籤的交集, 可以作為推薦依據。
+
+## Project 3 - Achievement System（遊戲）
+玩家以解鎖部分和成就需要的交集, 代表完成度2/3.
+這是 Microsoft Gaming 很常見的場景。
+
+## Project 4 - Excel / ETL 資料同步
+員工表和AD使用者的交集, 為有效員工.
+
+## Project 5 - Fraud Detection
+使用者設備：
+IP
+Cookie
+DeviceId
+
+另一帳號：
+IP
+DeviceId
+
+交集越高：
+
+可能同一人
+
+### 面試看到什麼要想到這題？
+
+關鍵字：
+Intersection
+Common
+Overlap
+Shared
+Duplicate Between Two Collections
+
+立刻想到：
+HashSet
+
+### 面試記憶口訣
+Intersection of Two Arrays
+ 
+第一步：
+HashSet(nums1)
+ 
+第二步：
+掃 nums2
+ 
+第三步：
+Contains()
+ 
+第四步：
+結果也用 HashSet 去重
+實務上最常用的 Set Operations
+C#
+HashSet<int> A;
+HashSet<int> B;
+
+交集：
+C#
+A.IntersectWith(B);
+
+聯集：
+C#
+A.UnionWith(B);
+ 
+
+差集：
+C#
+A.ExceptWith(B);
+
+因此這題真正要學的是：
+
+HashSet 與 Set Operation（交集、聯集、差集）
+
+這在權限系統、推薦系統、遊戲成就系統、資料同步與身份驗證中都非常常見。
 
 \---
 
-* Intersection of Two Arrays (#349)
 * Top K Frequent Elements (#347)
 
 
